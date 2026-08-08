@@ -1,0 +1,53 @@
+.techStack {
+    --template-width: 170px;
+    --template-shift: 72px;
+    --tech-name-width: 300px;
+
+    position: relative;
+    display: grid;
+    grid-template-columns: var(--template-width) var(--tech-name-width);
+
+    .wrapper {
+        position: relative;
+        flex-flow: column nowrap;
+        align-content: center;
+    }
+
+    ul {
+        list-style-type: circle;
+        list-style-position: inside;
+        margin-left: 10px;
+        text-align: left;
+    }
+
+    li {
+        height: var(--template-shift);
+        line-height: var(--template-shift);
+
+        span {
+            display: inline-block;
+            height: var(--template-shift);
+            width: 274px;
+            vertical-align: baseline; /* ideally we would use {vertical-align: first} but it is not widely supported yet, so we manually specify baselines */
+            baseline-source: first;
+            line-height: 24px;
+        }
+    }
+
+    .base {
+        width: var(--template-width);
+        position: absolute;
+        z-index: 0;
+        max-width: var(--template-width); /*required to override tailwind shit */
+    }
+
+    .logo {
+        position: absolute;
+        z-index: 1;
+        height: 37px;
+        left: calc(50% + 1px);  /* no deep magic here, just without this extra pixel it kinda looks uneven */
+        
+        transform: translateX(-50%) rotateX(54deg) rotateZ(315deg);
+    }
+
+}
