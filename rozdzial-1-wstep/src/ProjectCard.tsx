@@ -20,7 +20,7 @@ function ProjectCard(props: ProjectCardProps) {
     const [projectStatus, setProjectStatus] = useState(true);
 
     function changeStatus(){
-        setProjectStatus(!projectStatus);
+        setProjectStatus((prevStatus) => !prevStatus);
     }
 
   

@@ -1,7 +1,7 @@
 .techStack {
     --template-width: 170px;
     --template-shift: 72px;
-    --tech-name-width: 300px;
+    --tech-name-width: 320px;
 
     position: relative;
     display: grid;
@@ -27,7 +27,7 @@
         span {
             display: inline-block;
             height: var(--template-shift);
-            width: 274px;
+            width: 280px;
             vertical-align: baseline; /* ideally we would use {vertical-align: first} but it is not widely supported yet, so we manually specify baselines */
             baseline-source: first;
             line-height: 24px;
