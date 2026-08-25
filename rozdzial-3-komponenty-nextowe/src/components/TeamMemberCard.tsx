@@ -1,3 +1,5 @@
+import Image from "next/image"
+
 interface TeamMemberCardProps {
   name: string;
   role: string;
@@ -15,14 +17,14 @@ export default function TeamMemberCard({
     <div className="flex w-full max-w-md flex-col overflow-hidden rounded-2xl bg-white shadow-lg sm:max-w-xl sm:flex-row">
       <div className="flex h-44 items-center justify-center bg-red-400 sm:h-auto sm:w-48">
         <div className="flex h-24 w-24 m-5 items-center justify-center rounded-full bg-black/20 text-3xl font-bold text-white">
-          {
-            name
-              .split(" ")
-              .map((w) => w[0])
-              .join("")
-              .slice(0, 2)
-              .toUpperCase()
-          }
+          <Image
+            src="/avatar.png"
+            alt="Avatar"
+            className="size-24 shrink-0 rounded-full"
+            width={0}
+            height={0}
+            loading="eager"
+          />
         </div>
       </div>
       <div className="flex flex-col gap-4 p-6">
