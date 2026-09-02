@@ -29,6 +29,9 @@
     ".next/types/**/*.ts",
     ".next/dev/types/**/*.ts",
     "**/*.mts"
+, "src/app/(homepage)/@userModal/default.js"
+, "src/app/users/[id]/@userInfo/default.js"
+, "src/app/users/[id]/@userInfo/default.js"
   ],
   "exclude": ["node_modules"]
 }

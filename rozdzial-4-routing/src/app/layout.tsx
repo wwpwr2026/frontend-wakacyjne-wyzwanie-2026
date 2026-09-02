@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
+
+import Link from "next/link";
 import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
+import "@/src/app/globals.css";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -23,7 +25,20 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+        <body className="min-h-full flex flex-col">
+            <header className="sticky flex top-0 h-14 gap-4 min-w-full justify-center bg-radial-[at_50%_75%] from-sky-200 to-blue-500 hover:to-blue-900 ease-in-out duration-300 transition-colors">
+                <a 
+                    className="text-lg w-30 m-2 text-center content-center text-gray-600 rounded-xl hover:shadow-lg active:shadow-none hover:backdrop-blur-md"
+                    href="/"
+                >Strona główna</a>
+                <Link 
+                    className="text-lg w-30 m-2 text-center content-center text-gray-600 rounded-xl hover:shadow-lg active:shadow-none hover:backdrop-blur-md"
+                    href="https://solvro.pwr.edu.pl/pl/"
+                    target="_blank"
+                >Solvro</Link>
+            </header>
+            {children}
+        </body>
     </html>
   );
 }
