@@ -7,6 +7,10 @@ import {
   Dialog,
   DialogContent, DialogHeader, DialogTitle,
 } from "@/src/components/ui/dialog"
+import { Empty, EmptyContent, EmptyDescription, EmptyHeader, EmptyTitle } from "@/src/components/ui/empty";
+import { buttonVariants } from "@/src/components/ui/button";
+import Link from "next/link";
+
 import { UserProfileDetails } from "@/src/components/UserProfileDetails";
 
 export default function UserModal() {
@@ -24,19 +28,26 @@ export default function UserModal() {
     <Dialog open defaultOpen onOpenChange={onOpenChange}>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>User profile</DialogTitle>
+          <DialogTitle>{user && "User profile"}</DialogTitle>
         </DialogHeader>
 
         {user
           ? <UserProfileDetails user={user} useDivVersion={false} />
-          : <>
-              {/*
+          : 
+              /*
                 Dodaj komponent 'Empty' z shadcn
                 tak jak w error.tsx i not-found.tsx.
                 Dostosuj go do modalu
-              */}
-              Brak użytkownika
-            </>
+              */
+            <Empty className="h-full max-w-md mx-auto">
+                <EmptyHeader>
+                    <EmptyTitle className="text-4xl font-extrabold">404</EmptyTitle>
+                    <EmptyDescription className="max-w-xs text-pretty leading-tight">
+                        Ups, nie mogliśmy znaleźć tego użytkownika
+                    </EmptyDescription>
+                </EmptyHeader>
+            </Empty>
+            
         }
       </DialogContent>
     </Dialog>
