@@ -10,6 +10,7 @@ import {
 import { UserProfileDetails } from "@/src/components/UserProfileDetails";
 
 export default function UserModal() {
+
   const { id } = useParams<{ id: string; }>();
   const router = useRouter();
   const user: User | undefined = MOCK_USERS.find((user) => user.id === id);
@@ -27,7 +28,7 @@ export default function UserModal() {
         </DialogHeader>
 
         {user
-          ? <UserProfileDetails user={user} />
+          ? <UserProfileDetails user={user} useDivVersion={false} />
           : <>
               {/*
                 Dodaj komponent 'Empty' z shadcn

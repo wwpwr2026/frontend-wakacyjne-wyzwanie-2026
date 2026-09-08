@@ -6,12 +6,19 @@ import { buttonVariants } from "@/src/components/ui/button";
 import { ArrowLeftIcon } from "lucide-react";
 import Link from "next/link";
 
-interface PageProps { params: Promise<{ id: string }> }
+interface PageProps { 
+    params: Promise<{ id: string }>;
+    searchParams: Promise<{[key: string]: string | string[] | undefined}>;
+}
 
-export default async function Page({ params }: PageProps) {
+export default async function Page({ params, searchParams }: PageProps) {
   const { id } = await params;
+  const sp = await searchParams;
+
   const user: User | undefined = MOCK_USERS.find((user) => user.id === id);
   if (!user) return notFound();
+
+  const oldProfileDetails = 'old' in sp;
 
   return (
     <div className="mx-4 md:mx-12 flex flex-col gap-2">
@@ -23,7 +30,7 @@ export default async function Page({ params }: PageProps) {
         Back
       </Link>
 
-      <UserProfileDetails user={user} />
+      <UserProfileDetails user={user} useDivVersion={oldProfileDetails} />
     </div>
   )
 }
