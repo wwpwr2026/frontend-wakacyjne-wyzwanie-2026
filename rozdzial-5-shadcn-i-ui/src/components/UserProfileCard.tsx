@@ -11,6 +11,7 @@ import { buttonVariants} from "@/src/components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/src/components/ui/avatar";
 import Link from "next/link";
 import PizzaIcon from "@/src/components/PizzaIcon";
+import { cn } from "cn"
 
 interface UserProfileCardProps {
   user: User;
@@ -23,7 +24,7 @@ export function UserProfileCard({ user }: UserProfileCardProps) {
 
   return (
     // Nadanie elementowi klasy @container w celu obserwacji zmiany jego rozmiaru
-    <Card className="@container relative mx-auto max-w-none w-full pt-4">
+    <Card className="@container relative mx-auto max-w-none w-full pt-4 group">
       <Avatar className="size-24 mx-auto @md:ml-(--card-spacing)">
         <AvatarImage src={avatarUrl} />
         <AvatarFallback className="uppercase">{fallbackAvatar}</AvatarFallback>
@@ -38,7 +39,7 @@ export function UserProfileCard({ user }: UserProfileCardProps) {
         </CardAction>
 
         <CardTitle className="font-semibold text-xl">{name}</CardTitle>
-        <CardDescription>
+        <CardDescription className="text-sm">
           {role}
         </CardDescription>
       </CardHeader>
@@ -46,10 +47,13 @@ export function UserProfileCard({ user }: UserProfileCardProps) {
       {/* Pokaż przycisk dopiero po najechaniu na Card, dodaj animację */}
       <CardFooter>
         <Link
-          className={buttonVariants({
+          className={cn(
+          buttonVariants({
             size: 'lg',
             className: 'w-full @md:w-fit'
-          })}
+          }),
+          "opacity-0  group-hover:opacity-100 duration-500 ease-in-out"
+        )}
           href={profileUrl}
         >
           See profile
